@@ -28,7 +28,7 @@
     userRepository.users
   );
 
-  const calculator = new Calculator(1);
+  const calculator = new Calculator(state.currentUser.id);
   const averages = calculator.getAllAverages(database);
 
   // Start invoking render method

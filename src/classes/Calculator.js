@@ -40,10 +40,13 @@ class Calculator {
       });
     }
 
-    return dataToAverage.reduce((average, datapoint) => {
-      const avg = (average += datapoint[metric] / database[dataset].length);
-      return Math.round(avg * decimalPlacement) / decimalPlacement;
-    }, 0);
+    const nonRoundedAvg =
+      dataToAverage.reduce((average, datapoint) => {
+        const avg = (average += datapoint[metric]);
+        return avg;
+      }, 0) / database[dataset].length;
+
+    return Math.round(nonRoundedAvg * decimalPlacement) / decimalPlacement;
   }
 
   getAllAverages(database) {
@@ -54,22 +57,21 @@ class Calculator {
     categories.forEach(category => {
       let arr = [];
       let keys = Object.keys(database[category][0]);
-      keys.forEach(key => {arr.push([category, key])})
+      keys.forEach(key => {
+        arr.push([category, key]);
+      });
       metrics.push(arr);
-    })
+    });
 
     metrics = metrics.flat();
-    metrics = metrics.filter(metric => metric[1] !== 'userID' && metric[1] !== 'date');
+    metrics = metrics.filter(
+      metric => metric[1] !== "userID" && metric[1] !== "date"
+    );
 
     metrics.forEach(metric => {
+      let average = this.getAllUserAllTimeAvg(metric[0], database, metric[1]);
 
-      let average = this.getAllUserAllTimeAvg(
-        metric[0],
-        database,
-        metric[1]
-      )
-
-      averages.push([metric[1], average])
+      averages.push([metric[1], average]);
     });
 
     return averages;
