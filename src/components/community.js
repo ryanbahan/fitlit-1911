@@ -1,99 +1,63 @@
 const community = {
   generateHtmlString(id, state) {
     const calculator = new Calculator(id);
-    const userDailySteps = calculator.getUserDayTotal(
+
+    const communityDailySteps = calculator.getUserDayTotal(
       state.currentUserData.activityData,
       state.currentDay,
       "numSteps"
     );
-    const userActiveTime = calculator.getUserDayTotal(
+    const communityActiveTime = calculator.getUserDayTotal(
       state.currentUserData.activityData,
       state.currentDay,
       "minutesActive"
     );
-    const userMiles = calculator.stepsToMiles(state, state.currentDay);
-    const userFloorsClimbed = calculator.getUserDayTotal(
+    const communityMiles = calculator.stepsToMiles(state, state.currentDay);
+    const communityFloorsClimbed = calculator.getUserDayTotal(
       state.currentUserData.activityData,
       state.currentDay,
       "flightsOfStairs"
     );
 
-    const userSleep = calculator.getUserDayTotal(
+    const communitySleep = calculator.getUserDayTotal(
       state.currentUserData.sleepData,
       state.currentDay,
       "hoursSlept"
     );
-    const userSleepQuality = calculator.getUserDayTotal(
+    const communitySleepQuality = calculator.getUserDayTotal(
       state.currentUserData.sleepData,
       state.currentDay,
       "sleepQuality"
     );
 
-    const userHydration = calculator.getUserDayTotal(
+    const communityHydration = calculator.getUserDayTotal(
       state.currentUserData.hydrationData,
       state.currentDay,
-      "numOunces"
-    );
-
-    const userAllTimeSteps = calculator.getUserAllTimeAvg(
-      state.currentUserData.activityData,
-      "numSteps"
-    );
-    const userAllTimeActive = calculator.getUserAllTimeAvg(
-      state.currentUserData.activityData,
-      "minutesActive"
-    );
-    const userAllTimeMiles = calculator.stepsToMiles(state, state.currentDay);
-    const userAllTimeFloorsClimbed = calculator.getUserAllTimeAvg(
-      state.currentUserData.activityData,
-      "flightsOfStairs"
-    );
-
-    const overallSleep = calculator.getUserAllTimeAvg(
-      state.currentUserData.sleepData,
-      "hoursSlept"
-    );
-    const overallSleepQuality = calculator.getUserAllTimeAvg(
-      state.currentUserData.sleepData,
-      "sleepQuality"
-    );
-
-    const overallHydration = calculator.getUserAllTimeAvg(
-      state.currentUserData.hydrationData,
       "numOunces"
     );
 
     return `<h2 class="community-label">Community Daily Average</h2>
-    <div class="widget-block-small red">
+    <div class="activity-data-today-1 widget-block red">
       <i class="fas fa-shoe-prints"></i>
-      <p class="overall-steps-average-js">10.5K</p>
-    </div>
-    <br>
-    <div class="widget-block-small red">
+      <p class="user-daily-steps-js">${communityDailySteps}</p>
       <i class="fas fa-walking"></i>
-      <p class="overall-active-time-js">10.5K</p>
+      <p class="user-daily-active-time-js">${communityActiveTime}</p>
     </div>
-    <br>
-    <div class="widget-block-small light-red">
+    <div class="light-red activity-data-today-2 widget-block">
       <i class="fas fa-ruler"></i>
-      <p class="user-daily-miles-js">5.2m</p>
-    </div>
-    <br>
-    <div class="widget-block-small light-red">
+      <p class="user-daily-miles">${communityMiles}</p>
       <i class="far fa-building"></i>
-      <p class="average-daily-floors-js">2</p>
+      <p class="user-daily-floors-js">${communityFloorsClimbed}</p>
     </div>
-    <br>
-    <div class="widget-block-small blue">
+    <div class="sleep-data-today widget-block yellow">
       <i class="fas fa-bed"></i>
-      <p class="overall-sleep-js">8.2hrs</p>
+      <p class="user-daily-sleep-js">${communitySleep}</p>
       <i class="far fa-thumbs-up"></i>
-      <p class="overall-sleep-quality-js">3</p>
+      <p class="user-daily-sleep-quality-js">${communitySleepQuality}</p>
     </div>
-    <br>
-    <div class="widget-block-small yellow">
+    <div class="sleep-data-today widget-block blue">
       <i class="fas fa-mug-hot"></i>
-      <p class="overall-hydration-js">55oz</p>
+      <p class="user-daily-hydration-js">${communityHydration}oz</p>
     </div>`;
   }
 };

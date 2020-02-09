@@ -28,6 +28,11 @@
     userRepository.users
   );
 
+  const calculator = new Calculator(1);
+  const averages = calculator.getAllAverages(database);
+
+  // console.log(averages);
+
   // Start invoking render method
   // Please use state.currentDay for calculator date calls
   // Settings widget
