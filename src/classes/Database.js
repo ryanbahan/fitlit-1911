@@ -23,7 +23,7 @@ class Database {
 
   filterByMetric(category, metric, date, Calculator) {
     const filteredPeople = [];
-    const people = this.sleepData.reduce((people, person) => {
+    const people = this[category].reduce((people, person) => {
       if (person.userID !== people.find(id => id === person.userID)) {
         people.push(person.userID);
       }
@@ -32,7 +32,7 @@ class Database {
 
     people.forEach(id => {
       const calculator = new Calculator(id);
-      const weekData = calculator.getUserWeekTotal(this.sleepData, date, metric);
+      const weekData = calculator.getUserWeekTotal(this[category], date, metric);
       weekData.id = id;
 
       weekData.metrics = weekData.metrics.reduce((a, b) => {
@@ -49,6 +49,28 @@ class Database {
 
     return filteredPeople;
   };
+
+  getUserLeaderByCategory(category, date, metric) {
+    let returnValue = [];
+    let leaderboard = this[category].sort((a, b) => b[metric] - a[metric]);
+    let highestValue = leaderboard[0][metric];
+
+    leaderboard = leaderboard.filter(user => user[metric] === highestValue);
+    leaderboard = leaderboard.map(item => {
+      let newItem = {};
+      newItem.id = item.userID;
+      newItem[metric] = item[metric];
+      return newItem;
+    })
+
+    leaderboard.forEach(item => {
+      if (!returnValue.find(value => item.id === value.id)) {
+        returnValue.push(item);
+      }
+    })
+
+    return returnValue;
+  }
 
   getCurrentDay(currentUserData) {
     return currentUserData.hydrationData[
