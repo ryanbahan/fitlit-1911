@@ -3,7 +3,7 @@ const sleepDataTest = [
     userID: 1,
     date: "2019/06/15",
     hoursSlept: 6.1,
-    sleepQuality: 2.2
+    sleepQuality: 5
   },
   {
     userID: 1,
@@ -39,7 +39,7 @@ const sleepDataTest = [
     userID: 1,
     date: "2019/06/21",
     hoursSlept: 7.9,
-    sleepQuality: 1.6
+    sleepQuality: 5
   },
   {
     userID: 4,
