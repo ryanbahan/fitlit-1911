@@ -136,5 +136,7 @@ describe("Database", function() {
     expect(database.filterByMetric('sleepData', "sleepQuality", "2019/06/21", Calculator)).to.deep.equal([1]);
   });
 
-  it.skip("should return user(s) with greatest hours slept by date", function() {});
+  it("should return user(s) with greatest hours slept by date", function() {
+    expect(database.getUserLeaderByCategory('sleepData', "2019/06/17", "hoursSlept")).to.deep.equal([{id: 4, hoursSlept: 10.4}]);
+  });
 });
