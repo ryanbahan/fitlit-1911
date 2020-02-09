@@ -52,7 +52,7 @@ const allTime = {
         <i class="far fa-building"></i>
         <p class="user-all-time-floors-js">${Math.round(allTimeAvgFlights)}</p>
       </div>
-      <div class="user-sleep-data-all-time widget-block blue">
+      <div class="user-sleep-data-all-time widget-block yellow">
         <i class="fas fa-bed"></i>
         <p class="user-all-time-sleep-js">${allTimeAvgHoursSlept}</p>
         <i class="far fa-thumbs-up"></i>
@@ -60,7 +60,7 @@ const allTime = {
           1
         )}</p>
       </div>
-      <div class="user-sleep-data-all-time widget-block yellow">
+      <div class="user-sleep-data-all-time widget-block blue">
         <i class="fas fa-mug-hot"></i>
         <p class="user-all-time-hydration-js">${allTimeAvgHydration}oz</p>
       </div>
