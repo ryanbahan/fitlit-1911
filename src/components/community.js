@@ -1,42 +1,23 @@
 const community = {
-  generateHtmlString(id, state) {
-    const calculator = new Calculator(id);
+  generateHtmlString(averages) {
 
-    const communityDailySteps = calculator.getUserDayTotal(
-      state.currentUserData.activityData,
-      state.currentDay,
-      "numSteps"
-    );
-    const communityActiveTime = calculator.getUserDayTotal(
-      state.currentUserData.activityData,
-      state.currentDay,
-      "minutesActive"
-    );
-    const communityMiles = calculator.stepsToMiles(state, state.currentDay);
-    const communityFloorsClimbed = calculator.getUserDayTotal(
-      state.currentUserData.activityData,
-      state.currentDay,
-      "flightsOfStairs"
-    );
+    console.log(averages);
 
-    const communitySleep = calculator.getUserDayTotal(
-      state.currentUserData.sleepData,
-      state.currentDay,
-      "hoursSlept"
-    );
-    const communitySleepQuality = calculator.getUserDayTotal(
-      state.currentUserData.sleepData,
-      state.currentDay,
-      "sleepQuality"
-    );
+    const communityDailySteps = averages[1][1];
 
-    const communityHydration = calculator.getUserDayTotal(
-      state.currentUserData.hydrationData,
-      state.currentDay,
-      "numOunces"
-    );
+    const communityActiveTime = averages[2][1];
 
-    return `<h2 class="community-label">Community Daily Average</h2>
+    const communityMiles = averages[1][1];
+
+    const communityFloorsClimbed = averages[3][1];
+
+    const communitySleep = averages[4][1];
+
+    const communitySleepQuality = averages[5][1];
+
+    const communityHydration = averages[0][1];
+
+    return `<h2 class="community-label">Community Average</h2>
     <div class="activity-data-today-1 widget-block red">
       <i class="fas fa-shoe-prints"></i>
       <p class="user-daily-steps-js">${communityDailySteps}</p>

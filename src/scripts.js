@@ -31,8 +31,6 @@
   const calculator = new Calculator(1);
   const averages = calculator.getAllAverages(database);
 
-  // console.log(averages);
-
   // Start invoking render method
   // Please use state.currentDay for calculator date calls
   // Settings widget
@@ -59,10 +57,7 @@
   dom.render(dom.challenges, challengeHtmlString);
 
   // Community widget
-  const communityHtmlString = community.generateHtmlString(
-    state.currentUser.id,
-    state
-  );
+  const communityHtmlString = community.generateHtmlString(averages);
   dom.render(dom.community, communityHtmlString);
 
   // Friends widget
