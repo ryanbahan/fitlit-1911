@@ -26,6 +26,11 @@ class UserRepository {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
   }
+
+  setUserAvatar(id) {
+    let selectedUser = this.getUserData(id);
+    selectedUser.avatar = faker.image.avatar();
+  }
 }
 
 if (typeof module !== "undefined") {
