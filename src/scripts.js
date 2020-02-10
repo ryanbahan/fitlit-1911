@@ -13,6 +13,12 @@
   const randomId = userRepository.getRandomUserId();
   state.currentUser = userRepository.getUserData(randomId);
 
+  // Set avatar for currentUser and each id in state.currentUser.friends
+  userRepository.setUserAvatar(state.currentUser.id);
+  state.currentUser.friends.forEach(friendId => {
+    userRepository.setUserAvatar(friendId);
+  });
+
   // Instantiate database to hold all Hydration, Sleep, Activity data
   // Set state.currentUserData to the data of the currentUser
   const database = new Database(hydrationData, activityData, sleepData);

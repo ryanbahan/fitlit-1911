@@ -1,20 +1,11 @@
 const community = {
   generateHtmlString(averages) {
-
-    console.log(averages);
-
     const communityDailySteps = averages[1][1];
-
     const communityActiveTime = averages[2][1];
-
     const communityMiles = averages[1][1];
-
     const communityFloorsClimbed = averages[3][1];
-
     const communitySleep = averages[4][1];
-
     const communitySleepQuality = averages[5][1];
-
     const communityHydration = averages[0][1];
 
     return `<h2 class="community-label">Community Average</h2>
@@ -42,7 +33,6 @@ const community = {
     </div>`;
   }
 };
-
 
 // <h2 class="middle-label">Community Daily Average</h2>
 // <div class="sleep-data-community-average widget-block-small">

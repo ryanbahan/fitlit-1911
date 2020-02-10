@@ -7,10 +7,15 @@ class User {
     this.strideLength = user.strideLength;
     this.dailyStepGoal = user.dailyStepGoal;
     this.friends = user.friends;
+    this.avatar = null;
   }
 
   getFirstName() {
     return this.name.split(" ", 1).toString();
+  }
+
+  getAvatar() {
+    return this.avatar;
   }
 }
 
