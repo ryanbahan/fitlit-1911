@@ -84,7 +84,7 @@ const state = {
         userID: 1,
         date: "2019/06/15",
         hoursSlept: 6.1,
-        sleepQuality: 2.2
+        sleepQuality: 5
       },
       { userID: 1, date: "2019/06/16", hoursSlept: 5.4, sleepQuality: 3 },
       {
@@ -110,7 +110,7 @@ const state = {
         userID: 1,
         date: "2019/06/21",
         hoursSlept: 7.9,
-        sleepQuality: 1.6
+        sleepQuality: 5
       }
     ]
   }
@@ -225,7 +225,7 @@ describe("Calculator", function() {
           state.currentUserData.sleepData,
           "sleepQuality"
         )
-      ).to.equal(2.73);
+      ).to.equal(3.61);
     });
 
     it("should return user hours slept by date", function() {
@@ -245,7 +245,7 @@ describe("Calculator", function() {
           "2019/06/21",
           "sleepQuality"
         )
-      ).to.equal(1.6);
+      ).to.equal(5);
     });
 
     it("should return hours slept per day over the past seven days inclusive", function() {
@@ -300,20 +300,20 @@ describe("Calculator", function() {
           "2019/06/21",
           "sleepQuality"
         ).metrics[0]
-      ).to.equal(2.2);
+      ).to.equal(5);
       expect(
         calculator.getUserWeekTotal(
           state.currentUserData.sleepData,
           "2019/06/21",
           "sleepQuality"
         ).metrics[6]
-      ).to.equal(1.6);
+      ).to.equal(5);
     });
 
     it("should return all user average sleep quality", function() {
       expect(
         calculator.getAllUserAllTimeAvg("sleepData", database, "sleepQuality")
-      ).to.equal(2.55);
+      ).to.equal(3);
     });
   });
 

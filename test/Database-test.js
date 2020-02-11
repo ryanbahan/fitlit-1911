@@ -1,6 +1,7 @@
 const chai = require("chai");
 const { expect } = chai;
 const Database = require("../src/classes/Database");
+const Calculator = require("../src/classes/Calculator");
 const hydrationDataTest = require("../test-data/hydration-test.js");
 const activityDataTest = require("../test-data/activity-test.js");
 const sleepDataTest = require("../test-data/sleep-test.js");
@@ -8,8 +9,10 @@ const sleepDataTest = require("../test-data/sleep-test.js");
 describe("Database", function() {
   let database;
   let userOneDatabaseInfo;
+  let calculator;
 
   beforeEach("instantiate new Database", function() {
+    calculator = new Calculator(1);
     database = new Database(hydrationDataTest, activityDataTest, sleepDataTest);
     userOneDatabaseInfo = {
       hydrationData: [
@@ -78,7 +81,7 @@ describe("Database", function() {
           userID: 1,
           date: "2019/06/15",
           hoursSlept: 6.1,
-          sleepQuality: 2.2
+          sleepQuality: 5
         },
         { userID: 1, date: "2019/06/16", hoursSlept: 5.4, sleepQuality: 3 },
         {
@@ -104,7 +107,7 @@ describe("Database", function() {
           userID: 1,
           date: "2019/06/21",
           hoursSlept: 7.9,
-          sleepQuality: 1.6
+          sleepQuality: 5
         }
       ]
     };
@@ -129,7 +132,11 @@ describe("Database", function() {
     expect(database.getCurrentDay(userOneDatabaseInfo)).to.equal("2019/06/21");
   });
 
-  it.skip("should return all users with sleep quality > 3 over the past seven days inclusive", function() {});
+  it("should return all users with sleep quality > 3 over the past seven days inclusive", function() {
+    expect(database.filterByMetric('sleepData', "sleepQuality", "2019/06/21", Calculator)).to.deep.equal([1]);
+  });
 
-  it.skip("should return user(s) with greatest hours slept by date", function() {});
+  it("should return user(s) with greatest hours slept by date", function() {
+    expect(database.getUserLeaderByCategory('sleepData', "2019/06/17", "hoursSlept")).to.deep.equal([{id: 4, hoursSlept: 10.4}]);
+  });
 });

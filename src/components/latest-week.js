@@ -15,47 +15,152 @@ const latestWeek = {
 
     return htmlString;
   },
+  generateHydrationChart() {
+    let hydrationChart = new Chart(dom.latestWeekHydrationChartCtx, {
+      type: "bar",
+      data: {
+        labels: this.hydrationOunces.dates.map(date =>
+          date.toString().charAt(0)
+        ),
+        datasets: [
+          {
+            label: "Ounces consumed per day",
+            data: this.hydrationOunces.metrics,
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.2)",
+              "rgba(54, 162, 235, 0.2)",
+              "rgba(255, 206, 86, 0.2)",
+              "rgba(75, 192, 192, 0.2)",
+              "rgba(153, 102, 255, 0.2)",
+              "rgba(255, 159, 64, 0.2)"
+            ],
+            borderColor: [
+              "rgba(255, 99, 132, 1)",
+              "rgba(54, 162, 235, 1)",
+              "rgba(255, 206, 86, 1)",
+              "rgba(75, 192, 192, 1)",
+              "rgba(153, 102, 255, 1)",
+              "rgba(255, 159, 64, 1)"
+            ],
+            borderWidth: 1
+          }
+        ]
+      },
+      options: {
+        maintainAspectRatio: false,
+        scales: {
+          yAxes: [
+            {
+              stacked: true,
+              gridLines: {
+                display: true,
+                color: "rgba(255,99,132,0.2)"
+              }
+            }
+          ],
+          xAxes: [
+            {
+              gridLines: {
+                display: false
+              }
+            }
+          ]
+        }
+      }
+    });
+  },
+  generateSleepChart() {
+    Chart.defaults.global.elements.line.fill = false;
+
+    let sleepChart = new Chart(dom.latestWeekSleepChartCtx, {
+      type: "line",
+      data: {
+        labels: this.sleepHours.dates.map(date => date.toString().charAt(0)),
+        datasets: [
+          {
+            label: "Hours slept",
+            data: this.sleepHours.metrics,
+            fill: false,
+            borderColor: "rgba(255, 133, 133, 0.8)",
+            pointBackgroundColor: "rgba(255, 133, 133, 0.8)",
+            pointBorderColor: "rgba(152, 255, 251, 1)",
+            pointHoverBackgroundColor: "rgba(152, 255, 251, 1)",
+            pointHoverBorderColor: "rgba(152, 255, 251, 1)"
+          },
+          {
+            label: "Sleep quality",
+            data: this.sleepQuality.metrics,
+            fill: false,
+            borderColor: "rgba(152, 255, 251, 1)",
+            pointBackgroundColor: "rgba(152, 255, 251, 1)",
+            pointBorderColor: "rgba(255, 133, 133, 0.8)",
+            pointHoverBackgroundColor: "rgba(255, 133, 133, 0.8)",
+            pointHoverBorderColor: "rgba(255, 133, 133, 0.8)"
+          }
+        ]
+      },
+      options: {
+        maintainAspectRatio: false,
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true
+              }
+            }
+          ]
+        }
+      }
+    });
+  },
   generateHtmlString(state) {
-    const calculator = new Calculator(state.currentUser.id);
-    const hydrationOunces = calculator.getUserWeekTotal(
+    this.calculator = new Calculator(state.currentUser.id);
+    this.hydrationOunces = this.calculator.getUserWeekTotal(
       state.currentUserData.hydrationData,
       state.currentDay,
       "numOunces"
     );
-    const sleepHours = calculator.getUserWeekTotal(
+    this.sleepHours = this.calculator.getUserWeekTotal(
       state.currentUserData.sleepData,
       state.currentDay,
       "hoursSlept"
     );
-    const sleepQuality = calculator.getUserWeekTotal(
+    this.sleepQuality = this.calculator.getUserWeekTotal(
       state.currentUserData.sleepData,
       state.currentDay,
       "sleepQuality"
     );
-    const activitySteps = calculator.getUserWeekTotal(
+    this.activitySteps = this.calculator.getUserWeekTotal(
       state.currentUserData.activityData,
       state.currentDay,
       "numSteps"
     );
-    const activityMinutes = calculator.getUserWeekTotal(
+    this.activityMinutes = this.calculator.getUserWeekTotal(
       state.currentUserData.activityData,
       state.currentDay,
       "minutesActive"
     );
-    const activityFlights = calculator.getUserWeekTotal(
+    this.activityFlights = this.calculator.getUserWeekTotal(
       state.currentUserData.activityData,
       state.currentDay,
       "flightsOfStairs"
     );
 
     return `
-      <h2 class="latest-week__title-main">This Week</h2>
       <div class="latest-week__wrapper">
+        <h2 class="latest-week__title-main">This Week</h2>
+        <select name="latest-week-select" id="select-week-view" aria-label="Select data or chart view">
+          <option value="data-summary">Data summary</option>
+          <option value="hydration-chart">Hydration chart</option>
+          <option value="sleep-chart">Sleep chart</option>
+        </select>
+      </div>
+      <div class="data-summary latest-week__wrapper">
         <div class="latest-week__wrapper-hydration">
           <h2 class="latest-week__title">Hydration</h2>
           <div class="latest-week__content">
             <article class="latest-week__article latest-week__hydration">
-              ${this.renderRows(hydrationOunces, "oz")}
+              ${this.renderRows(this.hydrationOunces, "oz")}
             </article>
           </div>
         </div>
@@ -63,10 +168,10 @@ const latestWeek = {
           <h2 class="latest-week__title">Sleep hours @ quality</h2>
           <div class="latest-week__content">
             <article class="latest-week__article latest-week__sleep">
-              ${this.renderRows(sleepHours, "h")}
+              ${this.renderRows(this.sleepHours, "h")}
             </article>
             <article class="latest-week__article latest-week__sleep">
-              ${this.renderRows(sleepQuality, "", false)}
+              ${this.renderRows(this.sleepQuality, "", false)}
             </article>
           </div>
         </div>
@@ -74,17 +179,23 @@ const latestWeek = {
           <h2 class="latest-week__title">Steps / flights / minutes active</h2>
             <div class="latest-week__content">
               <article class="latest-week__article latest-week__activity">
-                ${this.renderRows(activitySteps, "")}
+                ${this.renderRows(this.activitySteps, "")}
               </article>
               <article class="latest-week__article latest-week__activity">
-                ${this.renderRows(activityFlights, "", false)}
+                ${this.renderRows(this.activityFlights, "", false)}
               </article>
               <article class="latest-week__article latest-week__activity">
-                ${this.renderRows(activityMinutes, "m", false)}
+                ${this.renderRows(this.activityMinutes, "m", false)}
             </article>
           </div>
         </div>
       </div>
+      <article class="chart-container hydration-chart is-hidden">
+        <canvas id="hydration-chart"></canvas>
+      </article>
+      <article class="chart-container sleep-chart is-hidden">
+        <canvas id="sleep-chart"></canvas>
+      </article>
     `;
   }
 };

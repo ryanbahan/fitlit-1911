@@ -4,11 +4,13 @@ const allTime = {
 
     const allTimeAvgSteps = calculator.getUserAllTimeAvg(
       state.currentUserData.activityData,
-      "numSteps"
+      "numSteps",
+      1
     );
     const allTimeAvgMinutes = calculator.getUserAllTimeAvg(
       state.currentUserData.activityData,
-      "minutesActive"
+      "minutesActive",
+      1
     );
     const allTimeAvgMiles = calculator.stepsToMiles(
       state,
@@ -17,19 +19,23 @@ const allTime = {
     );
     const allTimeAvgFlights = calculator.getUserAllTimeAvg(
       state.currentUserData.activityData,
-      "flightsOfStairs"
+      "flightsOfStairs",
+      10
     );
     const allTimeAvgHoursSlept = calculator.getUserAllTimeAvg(
       state.currentUserData.sleepData,
-      "hoursSlept"
+      "hoursSlept",
+      10
     );
     const allTimeAvgSleepQuality = calculator.getUserAllTimeAvg(
       state.currentUserData.sleepData,
-      "sleepQuality"
+      "sleepQuality",
+      100
     );
     const allTimeAvgHydration = calculator.getUserAllTimeAvg(
       state.currentUserData.hydrationData,
-      "numOunces"
+      "numOunces",
+      1
     );
 
     return `
@@ -44,15 +50,17 @@ const allTime = {
         <i class="fas fa-ruler"></i>
         <p class="user-all-time-miles">${allTimeAvgMiles}</p>
         <i class="far fa-building"></i>
-        <p class="user-all-time-floors-js">${allTimeAvgFlights}</p>
+        <p class="user-all-time-floors-js">${Math.round(allTimeAvgFlights)}</p>
       </div>
-      <div class="user-sleep-data-all-time widget-block blue">
+      <div class="user-sleep-data-all-time widget-block yellow">
         <i class="fas fa-bed"></i>
         <p class="user-all-time-sleep-js">${allTimeAvgHoursSlept}</p>
         <i class="far fa-thumbs-up"></i>
-        <p class="user-all-time-sleep-quality-js">${allTimeAvgSleepQuality}</p>
+        <p class="user-all-time-sleep-quality-js">${allTimeAvgSleepQuality.toFixed(
+          1
+        )}</p>
       </div>
-      <div class="user-sleep-data-all-time widget-block yellow">
+      <div class="user-sleep-data-all-time widget-block blue">
         <i class="fas fa-mug-hot"></i>
         <p class="user-all-time-hydration-js">${allTimeAvgHydration}oz</p>
       </div>

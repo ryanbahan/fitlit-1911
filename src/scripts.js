@@ -13,6 +13,12 @@
   const randomId = userRepository.getRandomUserId();
   state.currentUser = userRepository.getUserData(randomId);
 
+  // Set avatar for currentUser and each id in state.currentUser.friends
+  userRepository.setUserAvatar(state.currentUser.id);
+  state.currentUser.friends.forEach(friendId => {
+    userRepository.setUserAvatar(friendId);
+  });
+
   // Instantiate database to hold all Hydration, Sleep, Activity data
   // Set state.currentUserData to the data of the currentUser
   const database = new Database(hydrationData, activityData, sleepData);
@@ -27,6 +33,9 @@
     database.activityData,
     userRepository.users
   );
+
+  const calculator = new Calculator(state.currentUser.id);
+  const averages = calculator.getAllAverages(database);
 
   // Start invoking render method
   // Please use state.currentDay for calculator date calls
@@ -44,6 +53,18 @@
   // Latest week widget
   const latestWeekHtmlString = latestWeek.generateHtmlString(state);
   dom.render(dom.latestWeek, latestWeekHtmlString);
+  dom.latestWeekDataSummary = document.querySelector(".data-summary");
+  dom.latestWeekHydrationChart = document.querySelector(".hydration-chart");
+  dom.latestWeekHydrationChartCtx = document
+    .getElementById("hydration-chart")
+    .getContext("2d");
+  dom.latestWeekSleepChart = document.querySelector(".sleep-chart");
+  dom.latestWeekSleepChartCtx = document
+    .getElementById("sleep-chart")
+    .getContext("2d");
+  latestWeek.generateHydrationChart();
+  latestWeek.generateSleepChart();
+  dom.bindEvents(dom.latestWeek, "change", dom.handleLatestWeekSelect);
 
   // Welcome name widget
   const welcomeHtmlString = welcome.generateHtmlString(state);
@@ -54,10 +75,7 @@
   dom.render(dom.challenges, challengeHtmlString);
 
   // Community widget
-  const communityHtmlString = community.generateHtmlString(
-    state.currentUser.id,
-    state
-  );
+  const communityHtmlString = community.generateHtmlString(averages);
   dom.render(dom.community, communityHtmlString);
 
   // Friends widget

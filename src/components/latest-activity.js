@@ -63,26 +63,30 @@ const latestActivity = {
       "numOunces"
     );
 
-    return `<h2>Latest Activity</h2>
-              <div class="activity-data-today-1 widget-block red">
-                <i class="fas fa-shoe-prints"></i>
-                <p class="user-daily-steps-js">${userDailySteps}</p>
-                <i class="fas fa-walking"></i>
-                <p class="user-daily-active-time-js">${userActiveTime}</p>
-              </div>
-              <div class="light-red activity-data-today-2 widget-block">
-                <i class="fas fa-ruler"></i>
-                <p class="user-daily-miles">${userMiles}</p>
-                <i class="far fa-building"></i>
-                <p class="user-daily-floors-js">${userFloorsClimbed}</p>
-              </div>
-              <div class="sleep-data-today widget-block blue">
-                <i class="fas fa-bed"></i>
-                <p class="user-daily-sleep-js">${userSleep}</p>
-                <i class="far fa-thumbs-up"></i>
-                <p class="user-daily-sleep-quality-js">${userSleepQuality}</p>
-                <i class="fas fa-mug-hot"></i>
-                <p class="user-daily-hydration-js">${userHydration}oz</p>
-              </div>`;
+    return `
+      <h2>Latest Activity</h2>
+      <div class="activity-data-today-1 widget-block red">
+        <i class="fas fa-shoe-prints"></i>
+        <p class="user-daily-steps-js">${userDailySteps}</p>
+        <i class="fas fa-walking"></i>
+        <p class="user-daily-active-time-js">${userActiveTime}</p>
+      </div>
+      <div class="light-red activity-data-today-2 widget-block">
+        <i class="fas fa-ruler"></i>
+        <p class="user-daily-miles">${userMiles}</p>
+        <i class="far fa-building"></i>
+        <p class="user-daily-floors-js">${userFloorsClimbed}</p>
+      </div>
+      <div class="sleep-data-today widget-block yellow">
+        <i class="fas fa-bed"></i>
+        <p class="user-daily-sleep-js">${userSleep}</p>
+        <i class="far fa-thumbs-up"></i>
+        <p class="user-daily-sleep-quality-js">${userSleepQuality}</p>
+      </div>
+      <div class="sleep-data-today widget-block blue">
+        <i class="fas fa-mug-hot"></i>
+        <p class="user-daily-hydration-js">${userHydration}oz</p>
+      </div>
+    `;
   }
 };
