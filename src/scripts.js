@@ -53,6 +53,12 @@
   // Latest week widget
   const latestWeekHtmlString = latestWeek.generateHtmlString(state);
   dom.render(dom.latestWeek, latestWeekHtmlString);
+  // Cache dom elements
+  dom.latestWeekDataSummary = document.querySelector(".data-summary");
+  dom.latestWeekHydrationChart = document.querySelector(".hydration-chart");
+  dom.latestWeekSleepChart = document.querySelector(".sleep-chart");
+  // Bind events
+  dom.bindEvents(dom.latestWeek, "change", dom.handleLatestWeekSelect);
 
   // Welcome name widget
   const welcomeHtmlString = welcome.generateHtmlString(state);
