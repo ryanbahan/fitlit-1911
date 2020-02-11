@@ -49,8 +49,15 @@ const latestWeek = {
     );
 
     return `
-      <h2 class="latest-week__title-main">This Week</h2>
       <div class="latest-week__wrapper">
+        <h2 class="latest-week__title-main">This Week</h2>
+        <select name="latest-week-select" id="select-week-view" aria-label="Select data or chart view">
+          <option value="data-summary">Data summary</option>
+          <option value="hydration-chart">Hydration chart</option>
+          <option value="sleep-chart">Sleep chart</option>
+        </select>
+      </div>
+      <div class="data-summary latest-week__wrapper">
         <div class="latest-week__wrapper-hydration">
           <h2 class="latest-week__title">Hydration</h2>
           <div class="latest-week__content">
@@ -85,6 +92,12 @@ const latestWeek = {
           </div>
         </div>
       </div>
+      <article class="hydration-chart is-hidden">
+        <p>Hydration Chart</p>
+      </article>
+      <article class="sleep-chart is-hidden">
+        <p>Sleep Chart</p>
+      </article>
     `;
   }
 };

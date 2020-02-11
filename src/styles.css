@@ -149,7 +149,6 @@ p {
 .latest-week__wrapper {
   display: flex;
   justify-content: space-between;
-  height: 90%;
 }
 
 .latest-week__wrapper-activity,
@@ -268,5 +267,8 @@ p {
 }
 
 /* ---------- Active states ---------- */
+.is-hidden {
+  display: none;
+}
 
 /* ---------- Media queries ---------- */
