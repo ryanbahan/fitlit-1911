@@ -7,6 +7,7 @@ const dom = {
   latestActivity: document.querySelector(".latest-activity"),
   latestWeek: document.querySelector(".latest-week"),
   community: document.querySelector(".community"),
+  reportCard: document.querySelector(".report-card"),
   settings: document.querySelector(".settings"),
   welcome: document.querySelector(".user-profile"),
   stringToFragment(string) {

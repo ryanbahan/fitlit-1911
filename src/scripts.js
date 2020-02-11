@@ -73,4 +73,8 @@
   // All-time widget
   const allTimeHtmlString = allTime.generateHtmlString(state);
   dom.render(dom.allTime, allTimeHtmlString);
+  
+  // Report Card widget
+  const reportCardHtmlString = reportCard.generateHtmlString(state);
+  dom.render(dom.reportCard, reportCardHtmlString);
 })();
