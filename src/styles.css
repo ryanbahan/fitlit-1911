@@ -88,10 +88,17 @@ p {
 }
 
 .fitlit-nav-logo {
+  width: 80%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 1%;
+}
+
+.flatpickr {
+  height: 50px;
+  width: 310px;
+  justify-content: flex-end;
 }
 
 .friend {

@@ -66,6 +66,13 @@
   latestWeek.generateSleepChart();
   dom.bindEvents(dom.latestWeek, "change", dom.handleLatestWeekSelect);
 
+  let date = document.querySelector(".flatpickr");
+  flatpickr(date, {
+    altInput: true,
+    altFormat: "F j, Y",
+    dateFormat: "Y-m-d",
+});
+
   // Welcome name widget
   const welcomeHtmlString = welcome.generateHtmlString(state);
   dom.render(dom.welcome, welcomeHtmlString);
