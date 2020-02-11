@@ -29,6 +29,10 @@ aside {
   width: 20%;
 }
 
+canvas {
+  width: 100%;
+  height: 100%;
+}
 h1 {
   font-family: "Roboto Slab", serif;
   font-weight: 400;
@@ -71,6 +75,12 @@ p {
 
 .blue {
   background-color: var(--blue);
+}
+
+.chart-container {
+  height: 90%;
+  position: relative;
+  width: 100%;
 }
 
 .community-label {
