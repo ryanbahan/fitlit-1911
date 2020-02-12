@@ -51,9 +51,6 @@ body {
 
 main {
   width: 80%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-auto-rows: 50%;
 }
 
 nav {
@@ -75,6 +72,14 @@ p {
 
 .blue {
   background-color: var(--blue);
+}
+
+.card-container {
+  display: flex;
+  /* border: solid 2px black;
+  border-radius: 5%;
+  background-color: #e4e4e4; */
+  max-height: 40vh;
 }
 
 .chart-container {
@@ -119,10 +124,31 @@ p {
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   cursor: grab;
-  grid-column-start: 2;
-  grid-column-end: 4;
   margin: 2.5%;
   padding: 2.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+
+.large-card-container {
+  display: flex;
+  /* border: solid 2px black;
+  border-radius: 5%;
+  background-color: #e4e4e4; */
+  max-height: 40vh;
+}
+
+.large-card-right {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+.large-card-left {
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 
 .latest-week__article {
@@ -202,6 +228,12 @@ p {
   border: solid 1px black;
 }
 
+.row-a,
+.row-b {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
 .settings__title {
   margin-bottom: 0.6rem;
 }
@@ -210,9 +242,14 @@ p {
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   cursor: grab;
-  margin: 5%;
+  margin: 7.5%;
   overflow: scroll;
   padding: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
 }
 
 .user-profile {
