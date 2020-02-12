@@ -35,7 +35,11 @@
   );
 
   const calculator = new Calculator(state.currentUser.id);
-  const averages = calculator.getAllAverages(database);
+  const communityAllTimeAverages = calculator.getAllAverages(database, 'allTime');
+  const communityDayAverages = calculator.getAllAverages(database, 'daily', state.currentDay);
+
+  dom.communityAllTimeAvg = communityAllTimeAverages;
+  dom.communityDailyAvg = communityDayAverages;
 
   // Start invoking render method
   // Please use state.currentDay for calculator date calls
@@ -71,6 +75,14 @@
   latestWeek.generateSleepChart();
   dom.bindEvents(dom.latestWeek, "change", dom.handleLatestWeekSelect);
 
+  let date = document.querySelector(".flatpickr");
+
+  flatpickr(date, {
+    altInput: true,
+    altFormat: "F j, Y",
+    dateFormat: "Y-m-d",
+});
+
   // Welcome name widget
   const welcomeHtmlString = welcome.generateHtmlString(state);
   dom.render(dom.welcome, welcomeHtmlString);
@@ -80,8 +92,9 @@
   dom.render(dom.challenges, challengeHtmlString);
 
   // Community widget
-  const communityHtmlString = community.generateHtmlString(averages);
+  const communityHtmlString = community.generateHtmlString(communityAllTimeAverages, communityDayAverages);
   dom.render(dom.community, communityHtmlString);
+  dom.bindEvents(dom.community, "change", dom.handleCommunitySelect);
 
   // Friends widget
   const friendsHtmlString = friends.generateHtmlString(state, userRepository);

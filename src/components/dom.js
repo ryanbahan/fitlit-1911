@@ -2,6 +2,8 @@ const dom = {
   allTime: document.querySelector(".all-time"),
   challenges: document.querySelector(".challenge-goals"),
   community: document.querySelector(".community"),
+  communityAllTimeAvg: null,
+  communityDailyAvg: null,
   friends: document.querySelector(".friends"),
   latestActivity: document.querySelector(".latest-activity"),
   latestWeek: document.querySelector(".latest-week"),
@@ -19,6 +21,7 @@ const dom = {
   bindEvents(targetElement, eventType, handlerFunction) {
     targetElement.addEventListener(eventType, handlerFunction);
   },
+
   handleLatestWeekSelect(e) {
     const { selectedIndex } = e.target;
     const displays = [
@@ -42,6 +45,33 @@ const dom = {
         break;
       case 3:
         dom.latestWeekDataSummary.classList.remove("is-hidden");
+        break;
+      default:
+        break;
+    }
+  },
+  handleCommunitySelect(e) {
+    const { selectedIndex } = e.target;
+    const dataContainers = [...dom.community.querySelectorAll('.community-data')];
+
+    switch (selectedIndex) {
+      case 0:
+        dataContainers[0].innerHTML = dom.communityAllTimeAvg[1][1];
+        dataContainers[1].innerHTML = dom.communityAllTimeAvg[2][1];
+        dataContainers[2].innerHTML = dom.communityAllTimeAvg[1][1];
+        dataContainers[3].innerHTML = dom.communityAllTimeAvg[3][1];
+        dataContainers[4].innerHTML = dom.communityAllTimeAvg[4][1];
+        dataContainers[5].innerHTML = dom.communityAllTimeAvg[5][1];
+        dataContainers[6].innerHTML = dom.communityAllTimeAvg[0][1];
+        break;
+      case 1:
+        dataContainers[0].innerHTML = dom.communityDailyAvg[1][1];
+        dataContainers[1].innerHTML = dom.communityDailyAvg[2][1];
+        dataContainers[2].innerHTML = dom.communityDailyAvg[1][1];
+        dataContainers[3].innerHTML = dom.communityDailyAvg[3][1];
+        dataContainers[4].innerHTML = dom.communityDailyAvg[4][1];
+        dataContainers[5].innerHTML = dom.communityDailyAvg[5][1];
+        dataContainers[6].innerHTML = dom.communityDailyAvg[0][1];
         break;
       default:
         break;

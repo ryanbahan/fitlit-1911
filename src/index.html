@@ -5,6 +5,8 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
     <title>Activity Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+          rel="stylesheet">
     <link href="./styles.css"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap"
@@ -15,12 +17,12 @@
           rel="stylesheet">
   </head>
   <body>
-
     <div class="app-container">
       <nav>
         <div class="fitlit-nav-logo">
           <h1>Fit<strong>Lit</strong></h1>
-        </div>
+          <input class="flatpickr flatpickr-input active"
+                 placeholder="Select Date..."></input>
       </nav>
       <main>
         <div class="row-a">
@@ -59,8 +61,9 @@
         </section>
       </aside>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script
+            src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"
             type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"
