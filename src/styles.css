@@ -76,10 +76,6 @@ p {
 
 .card-container {
   display: flex;
-  /* border: solid 2px black;
-  border-radius: 5%;
-  background-color: #e4e4e4; */
-  max-height: 40vh;
 }
 
 .chart-container {
@@ -130,15 +126,12 @@ p {
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+  background-color: #fff;
 }
 
 
 .large-card-container {
   display: flex;
-  /* border: solid 2px black;
-  border-radius: 5%;
-  background-color: #e4e4e4; */
-  max-height: 40vh;
 }
 
 .large-card-right {
@@ -250,6 +243,7 @@ p {
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+  background-color: #fff;
 }
 
 .user-profile {
