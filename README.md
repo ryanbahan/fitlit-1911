@@ -15,8 +15,8 @@ A fitness tracking dashboard displaying metrics from a large data set. Metrics i
 
 - JavaScript
 - Mocha/Chai
-- Chart.js
-- To be added...
+- Chart.js 
+- Flatpickr.js (Calendar API)
 
 ### 3. Installation
 
