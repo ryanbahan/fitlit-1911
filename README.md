@@ -5,7 +5,7 @@
 3. [Installation](#installation)
 4. [Deployment](#deployment)
 
-TODO: Add screenshots here
+![fitlit](https://user-images.githubusercontent.com/54119863/74386692-d8ccb300-4db3-11ea-95fa-daa6d720dddf.gif)
 
 ### 1. Abstract
 
