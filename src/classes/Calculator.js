@@ -124,6 +124,16 @@ class Calculator {
     return trendDates;
   }
 
+  getPercentages(dataset) {
+    const percentages = [];
+    const max = Math.max(...dataset);
+    dataset.forEach(datum => {
+      percentages.push((datum * 100) / max);
+    });
+
+    return percentages;
+  }
+
   calculateTotal(data) {
     return data.metrics.reduce((a, b) => {
       a += b;
