@@ -123,7 +123,7 @@ const latestWeek = {
         datasets: [
           {
             label: "Hydration",
-            data: this.hydrationOunces.metrics,
+            data: this.hydrationOuncesPercentages,
             fill: false,
             borderColor: "rgba(152, 255, 251, 1)",
             pointBackgroundColor: "rgba(152, 255, 251, 1)",
@@ -133,17 +133,17 @@ const latestWeek = {
           },
           {
             label: "Sleep",
-            data: this.sleepHours.metrics,
+            data: this.sleepHoursPercentages,
             fill: false,
-            borderColor: "rgba(255, 255, 123, 0.8)",
-            pointBackgroundColor: "rgba(255, 255, 123, 0.8)",
-            pointBorderColor: "rgba(255, 255, 123, 0.8)",
-            pointHoverBackgroundColor: "rgba(255, 255, 123, 0.8)",
-            pointHoverBorderColor: "rgba(255, 255, 123, 0.8)"
+            borderColor: "rgba(255, 255, 123, 1)",
+            pointBackgroundColor: "rgba(255, 255, 123, 1)",
+            pointBorderColor: "rgba(255, 255, 123, 1)",
+            pointHoverBackgroundColor: "rgba(255, 255, 123, 1)",
+            pointHoverBorderColor: "rgba(255, 255, 123, 1)"
           },
           {
             label: "Activity",
-            data: this.activityMinutes.metrics,
+            data: this.activityMinutesPercentages,
             fill: false,
             borderColor: "rgba(255, 133, 133, 0.8)",
             pointBackgroundColor: "rgba(255, 133, 133, 0.8)",
@@ -159,6 +159,8 @@ const latestWeek = {
           yAxes: [
             {
               ticks: {
+                stepSize: 25,
+                stepValue: 10,
                 beginAtZero: true
               }
             }
@@ -174,10 +176,16 @@ const latestWeek = {
       state.currentDay,
       "numOunces"
     );
+    this.hydrationOuncesPercentages = this.calculator.getPercentages(
+      this.hydrationOunces.metrics
+    );
     this.sleepHours = this.calculator.getUserWeekTotal(
       state.currentUserData.sleepData,
       state.currentDay,
       "hoursSlept"
+    );
+    this.sleepHoursPercentages = this.calculator.getPercentages(
+      this.sleepHours.metrics
     );
     this.sleepQuality = this.calculator.getUserWeekTotal(
       state.currentUserData.sleepData,
@@ -193,6 +201,9 @@ const latestWeek = {
       state.currentUserData.activityData,
       state.currentDay,
       "minutesActive"
+    );
+    this.activityMinutesPercentages = this.calculator.getPercentages(
+      this.activityMinutes.metrics
     );
     this.activityFlights = this.calculator.getUserWeekTotal(
       state.currentUserData.activityData,
