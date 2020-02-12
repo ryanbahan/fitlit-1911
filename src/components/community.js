@@ -48,22 +48,3 @@ const community = {
     </div>`;
   }
 };
-
-// <h2 class="middle-label">Community Daily Average</h2>
-// <div class="sleep-data-community-average widget-block-small">
-//   <i class="fas fa-bed"></i>
-//   <p class="overall-sleep-js">8.2hrs</p>
-//   <i class="far fa-thumbs-up"></i>
-//   <p class="overall-sleep-quality-js">3</p>
-//   <i class="fas fa-mug-hot"></i>
-//   <p class="overall-hydration-js">55oz</p>
-// </div>
-//
-// <div class="sleep-data-today-average widget-block-small">
-//   <i class="fas fa-bed"></i>
-//   <p class="user-daily-sleep-js">${overallSleep}</p>
-//   <i class="far fa-thumbs-up"></i>
-//   <p class="average-daily-sleep-quality-js">${overallSleepQuality}</p>
-//   <i class="fas fa-mug-hot"></i>
-//   <p class="average-daily-hydration-js">${overallHydration}oz</p>
-// </div>

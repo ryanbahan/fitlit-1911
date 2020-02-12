@@ -54,14 +54,6 @@ const dom = {
     const { selectedIndex } = e.target;
     const dataContainers = [...dom.community.querySelectorAll('.community-data')];
 
-    // const displays = [
-    //   dom.latestWeekDataSummary,
-    //   dom.latestWeekHydrationChart,
-    //   dom.latestWeekSleepChart
-    // ];
-    //
-    // displays.forEach(display => display.classList.add("is-hidden"));
-    //
     switch (selectedIndex) {
       case 0:
         dataContainers[0].innerHTML = dom.communityAllTimeAvg[1][1];

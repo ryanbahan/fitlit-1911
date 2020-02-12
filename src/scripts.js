@@ -76,6 +76,7 @@
   dom.bindEvents(dom.latestWeek, "change", dom.handleLatestWeekSelect);
 
   let date = document.querySelector(".flatpickr");
+
   flatpickr(date, {
     altInput: true,
     altFormat: "F j, Y",
