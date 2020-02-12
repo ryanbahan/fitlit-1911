@@ -113,6 +113,60 @@ const latestWeek = {
       }
     });
   },
+  generateSummaryChart() {
+    Chart.defaults.global.elements.line.fill = false;
+
+    let summaryChart = new Chart(dom.latestWeekSummaryChartCtx, {
+      type: "line",
+      data: {
+        labels: this.sleepHours.dates.map(date => date.toString().charAt(0)),
+        datasets: [
+          {
+            label: "Hydration",
+            data: this.hydrationOunces.metrics,
+            fill: false,
+            borderColor: "rgba(152, 255, 251, 1)",
+            pointBackgroundColor: "rgba(152, 255, 251, 1)",
+            pointBorderColor: "rgba(152, 255, 251, 1)",
+            pointHoverBackgroundColor: "rgba(152, 255, 251, 1)",
+            pointHoverBorderColor: "rgba(152, 255, 251, 1)"
+          },
+          {
+            label: "Sleep",
+            data: this.sleepHours.metrics,
+            fill: false,
+            borderColor: "rgba(255, 255, 123, 0.8)",
+            pointBackgroundColor: "rgba(255, 255, 123, 0.8)",
+            pointBorderColor: "rgba(255, 255, 123, 0.8)",
+            pointHoverBackgroundColor: "rgba(255, 255, 123, 0.8)",
+            pointHoverBorderColor: "rgba(255, 255, 123, 0.8)"
+          },
+          {
+            label: "Activity",
+            data: this.activityMinutes.metrics,
+            fill: false,
+            borderColor: "rgba(255, 133, 133, 0.8)",
+            pointBackgroundColor: "rgba(255, 133, 133, 0.8)",
+            pointBorderColor: "rgba(255, 133, 133, 0.8)",
+            pointHoverBackgroundColor: "rgba(255, 133, 133, 0.8)",
+            pointHoverBorderColor: "rgba(255, 133, 133, 0.8)"
+          }
+        ]
+      },
+      options: {
+        maintainAspectRatio: false,
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true
+              }
+            }
+          ]
+        }
+      }
+    });
+  },
   generateHtmlString(state) {
     this.calculator = new Calculator(state.currentUser.id);
     this.hydrationOunces = this.calculator.getUserWeekTotal(
@@ -150,12 +204,22 @@ const latestWeek = {
       <div class="latest-week__wrapper">
         <h2 class="latest-week__title-main">This Week</h2>
         <select name="latest-week-select" id="select-week-view" aria-label="Select data or chart view">
-          <option value="data-summary">Data summary</option>
+          <option value="summary-chart">Chart summary</option>
           <option value="hydration-chart">Hydration chart</option>
           <option value="sleep-chart">Sleep chart</option>
+          <option value="data-summary">Data summary</option>
         </select>
       </div>
-      <div class="data-summary latest-week__wrapper">
+      <article class="chart-container summary-chart">
+        <canvas id="summary-chart"></canvas>
+      </article>
+      <article class="chart-container hydration-chart is-hidden">
+        <canvas id="hydration-chart"></canvas>
+      </article>
+      <article class="chart-container sleep-chart is-hidden">
+        <canvas id="sleep-chart"></canvas>
+      </article>
+      <div class="data-summary latest-week__wrapper is-hidden">
         <div class="latest-week__wrapper-hydration">
           <h2 class="latest-week__title">Hydration</h2>
           <div class="latest-week__content">
@@ -190,12 +254,6 @@ const latestWeek = {
           </div>
         </div>
       </div>
-      <article class="chart-container hydration-chart is-hidden">
-        <canvas id="hydration-chart"></canvas>
-      </article>
-      <article class="chart-container sleep-chart is-hidden">
-        <canvas id="sleep-chart"></canvas>
-      </article>
     `;
   }
 };
