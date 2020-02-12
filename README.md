@@ -23,7 +23,7 @@ A fitness tracking dashboard displaying metrics from a large data set. Metrics i
 1. Fork and/or clone/download this repo
 2. Change into the directory
 3. Install dependencies via `npm install`
-4. Open index.html a browser
+4. Open index.html in a browser
 
 ### 4. Deployment
 
