@@ -142,11 +142,12 @@ p {
 
 .flatpickr {
   text-align: right;
-  padding-right: 6%;
+  padding-right: 2%;
   height: 25px;
   /* width: 310px; */
   justify-content: flex-end;
   margin-top: 3%;
+  font-style: italic;
 }
 
 .friend {
