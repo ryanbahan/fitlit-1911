@@ -25,15 +25,6 @@
   state.currentUserData = database.filterUser(state.currentUser.id);
   state.currentDay = database.getCurrentDay(state.currentUserData);
 
-  // Instantiate a new state of challenge to get data for the current user and their friends
-  const challengeState = new Challenge(state.currentUser);
-  challengeState.getUsers(state.currentUser);
-  challengeState.getUsersData(
-    Calculator,
-    database.activityData,
-    userRepository.users
-  );
-
   const calculator = new Calculator(state.currentUser.id);
   const communityAllTimeAverages = calculator.getAllAverages(database, 'allTime');
   const communityDayAverages = calculator.getAllAverages(database, 'daily', state.currentDay);
@@ -84,6 +75,16 @@
     dom.clear(dom.challenges);
     dom.clear(dom.community);
     dom.clear(dom.reportCard);
+
+    // Instantiate a new state of challenge to get data for the current user and their friends
+    const challengeState = new Challenge(state.currentUser);
+    challengeState.getUsers(state.currentUser);
+    challengeState.getUsersData(
+      Calculator,
+      database.activityData,
+      userRepository.users,
+      state.currentDay
+    );
 
   // Latest Activity widget
   const latestActivityHtmlString = latestActivity.generateHtmlString(
