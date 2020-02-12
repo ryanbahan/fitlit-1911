@@ -35,7 +35,11 @@
   );
 
   const calculator = new Calculator(state.currentUser.id);
-  const averages = calculator.getAllAverages(database);
+  const communityAllTimeAverages = calculator.getAllAverages(database, 'allTime');
+  const communityDayAverages = calculator.getAllAverages(database, 'daily', state.currentDay);
+
+  dom.communityAllTimeAvg = communityAllTimeAverages;
+  dom.communityDailyAvg = communityDayAverages;
 
   // Start invoking render method
   // Please use state.currentDay for calculator date calls
@@ -47,12 +51,14 @@
   const friendsHtmlString = friends.generateHtmlString(state, userRepository);
   dom.render(dom.friends, friendsHtmlString);
 
+
   // Welcome name widget
   const welcomeHtmlString = welcome.generateHtmlString(state);
   dom.render(dom.welcome, welcomeHtmlString);
 
 // Create calendar and add event listener
   let date = document.querySelector(".flatpickr");
+
   flatpickr(date, {
     altInput: true,
     altFormat: "F j, Y",
@@ -79,28 +85,33 @@
     dom.clear(dom.community);
     dom.clear(dom.reportCard);
 
-    // Latest week widget
-    const latestWeekHtmlString = latestWeek.generateHtmlString(state);
-    dom.render(dom.latestWeek, latestWeekHtmlString);
-    dom.latestWeekDataSummary = document.querySelector(".data-summary");
-    dom.latestWeekHydrationChart = document.querySelector(".hydration-chart");
-    dom.latestWeekHydrationChartCtx = document
+  // Latest Activity widget
+  const latestActivityHtmlString = latestActivity.generateHtmlString(
+    state.currentUser.id,
+    state
+  );
+  dom.render(dom.latestActivity, latestActivityHtmlString);
+
+  // Latest week widget
+  const latestWeekHtmlString = latestWeek.generateHtmlString(state);
+  dom.render(dom.latestWeek, latestWeekHtmlString);
+  dom.latestWeekDataSummary = document.querySelector(".data-summary");
+  dom.latestWeekSummaryChart = document.querySelector(".summary-chart");
+  dom.latestWeekSummaryChartCtx = document
+    .getElementById("summary-chart")
+    .getContext("2d");
+  dom.latestWeekHydrationChart = document.querySelector(".hydration-chart");
+  dom.latestWeekHydrationChartCtx = document
     .getElementById("hydration-chart")
     .getContext("2d");
-    dom.latestWeekSleepChart = document.querySelector(".sleep-chart");
-    dom.latestWeekSleepChartCtx = document
+  dom.latestWeekSleepChart = document.querySelector(".sleep-chart");
+  dom.latestWeekSleepChartCtx = document
     .getElementById("sleep-chart")
     .getContext("2d");
-    latestWeek.generateHydrationChart();
-    latestWeek.generateSleepChart();
-    dom.bindEvents(dom.latestWeek, "change", dom.handleLatestWeekSelect);
-
-    // Latest Activity widget
-    const latestActivityHtmlString = latestActivity.generateHtmlString(
-      state.currentUser.id,
-      state
-    );
-    dom.render(dom.latestActivity, latestActivityHtmlString);
+  latestWeek.generateSummaryChart();
+  latestWeek.generateHydrationChart();
+  latestWeek.generateSleepChart();
+  dom.bindEvents(dom.latestWeek, "change", dom.handleLatestWeekSelect);
 
     // Challenge widget
     const challengeHtmlString = challenge.generateHtmlString(challengeState);
@@ -109,7 +120,7 @@
     // Community widget
     const communityHtmlString = community.generateHtmlString(averages);
     dom.render(dom.community, communityHtmlString);
-
+    dom.bindEvents(dom.community, "change", dom.handleCommunitySelect);
 
     // All-time widget
     const allTimeHtmlString = allTime.generateHtmlString(state);

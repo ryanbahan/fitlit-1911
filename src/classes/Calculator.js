@@ -52,7 +52,7 @@ class Calculator {
     return Math.round(nonRoundedAvg * decimalPlacement) / decimalPlacement;
   }
 
-  getAllAverages(database) {
+  getAllAverages(database, avgType, date) {
     let averages = [];
     let categories = Object.keys(database);
     let metrics = [];
@@ -71,11 +71,21 @@ class Calculator {
       metric => metric[1] !== "userID" && metric[1] !== "date"
     );
 
-    metrics.forEach(metric => {
-      let average = this.getAllUserAllTimeAvg(metric[0], database, metric[1]);
+    if (avgType === 'allTime') {
 
-      averages.push([metric[1], average]);
-    });
+
+      metrics.forEach(metric => {
+        let average = this.getAllUserAllTimeAvg(metric[0], database, metric[1]);
+
+        averages.push([metric[1], average]);
+      });
+
+    } else if (avgType === 'daily') {
+      metrics.forEach(metric => {
+        let average = this.getUserDayTotal(database[metric[0]], date, metric[1]);
+        averages.push([metric[1], average])
+      })
+    }
 
     return averages;
   }
@@ -125,6 +135,16 @@ class Calculator {
     }, []);
 
     return trendDates;
+  }
+
+  getPercentages(dataset) {
+    const percentages = [];
+    const max = Math.max(...dataset);
+    dataset.forEach(datum => {
+      percentages.push(Math.round((datum * 100) / max));
+    });
+
+    return percentages;
   }
 
   calculateTotal(data) {
