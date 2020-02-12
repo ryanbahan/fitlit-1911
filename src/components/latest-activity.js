@@ -67,25 +67,25 @@ const latestActivity = {
       <h2>Latest 24hrs</h2>
       <div class="activity-data-today-1 widget-block red">
         <i class="fas fa-shoe-prints"></i>
-        <p class="user-daily-steps-js">${userDailySteps}</p>
-        <i class="fas fa-walking"></i>
-        <p class="user-daily-active-time-js">${userActiveTime}</p>
+        <p class="user-daily-steps-js">${userDailySteps}</br>steps</p>
+        <i class="far fa-clock"></i>
+        <p class="user-daily-active-time-js">${userActiveTime}</br>min</p>
       </div>
       <div class="light-red activity-data-today-2 widget-block">
         <i class="fas fa-ruler"></i>
-        <p class="user-daily-miles">${userMiles}</p>
+        <p class="user-daily-miles">${userMiles}</br>miles</p>
         <i class="far fa-building"></i>
-        <p class="user-daily-floors-js">${userFloorsClimbed}</p>
+        <p class="user-daily-floors-js">${userFloorsClimbed}</br>floors</p>
       </div>
       <div class="sleep-data-today widget-block yellow">
         <i class="fas fa-bed"></i>
-        <p class="user-daily-sleep-js">${userSleep}</p>
+        <p class="user-daily-sleep-js">${userSleep}</br>hrs</p>
         <i class="far fa-thumbs-up"></i>
-        <p class="user-daily-sleep-quality-js">${userSleepQuality}</p>
+        <p class="user-daily-sleep-quality-js">${userSleepQuality}</br>quality</p>
       </div>
       <div class="sleep-data-today widget-block blue">
-        <i class="fas fa-mug-hot"></i>
-        <p class="user-daily-hydration-js">${userHydration}oz</p>
+        <i class="fas fa-tint"></i>
+        <p class="user-daily-hydration-js">${userHydration}</br>oz</p>
       </div>
     `;
   }
