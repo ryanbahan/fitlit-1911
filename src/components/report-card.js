@@ -64,4 +64,4 @@ const reportCard = {
       return grades;
     };
   }
-}
+};

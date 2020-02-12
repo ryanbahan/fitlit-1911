@@ -54,6 +54,10 @@
   const latestWeekHtmlString = latestWeek.generateHtmlString(state);
   dom.render(dom.latestWeek, latestWeekHtmlString);
   dom.latestWeekDataSummary = document.querySelector(".data-summary");
+  dom.latestWeekSummaryChart = document.querySelector(".summary-chart");
+  dom.latestWeekSummaryChartCtx = document
+    .getElementById("summary-chart")
+    .getContext("2d");
   dom.latestWeekHydrationChart = document.querySelector(".hydration-chart");
   dom.latestWeekHydrationChartCtx = document
     .getElementById("hydration-chart")
@@ -62,6 +66,7 @@
   dom.latestWeekSleepChartCtx = document
     .getElementById("sleep-chart")
     .getContext("2d");
+  latestWeek.generateSummaryChart();
   latestWeek.generateHydrationChart();
   latestWeek.generateSleepChart();
   dom.bindEvents(dom.latestWeek, "change", dom.handleLatestWeekSelect);
