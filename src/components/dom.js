@@ -56,13 +56,13 @@ const dom = {
 
     switch (selectedIndex) {
       case 0:
-        dataContainers[0].innerHTML = dom.communityAllTimeAvg[1][1];
-        dataContainers[1].innerHTML = dom.communityAllTimeAvg[2][1];
-        dataContainers[2].innerHTML = dom.communityAllTimeAvg[1][1];
-        dataContainers[3].innerHTML = dom.communityAllTimeAvg[3][1];
-        dataContainers[4].innerHTML = dom.communityAllTimeAvg[4][1];
-        dataContainers[5].innerHTML = dom.communityAllTimeAvg[5][1];
-        dataContainers[6].innerHTML = dom.communityAllTimeAvg[0][1];
+        dataContainers[0].innerHTML = dom.communityAllTimeAvg[1][1].toFixed(0);
+        dataContainers[1].innerHTML = dom.communityAllTimeAvg[2][1].toFixed(0);
+        dataContainers[2].innerHTML = dom.communityAllTimeAvg[1][1].toFixed(2);
+        dataContainers[3].innerHTML = dom.communityAllTimeAvg[3][1].toFixed(0);
+        dataContainers[4].innerHTML = dom.communityAllTimeAvg[4][1].toFixed(1);
+        dataContainers[5].innerHTML = dom.communityAllTimeAvg[5][1].toFixed(1);
+        dataContainers[6].innerHTML = dom.communityAllTimeAvg[0][1].toFixed(0);
         break;
       case 1:
         dataContainers[0].innerHTML = dom.communityDailyAvg[1][1];
