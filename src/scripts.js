@@ -47,6 +47,44 @@
   const settingsHtmlString = settings.generateHtmlString(state.currentUser);
   dom.render(dom.settings, settingsHtmlString);
 
+  // Friends widget
+  const friendsHtmlString = friends.generateHtmlString(state, userRepository);
+  dom.render(dom.friends, friendsHtmlString);
+
+
+  // Welcome name widget
+  const welcomeHtmlString = welcome.generateHtmlString(state);
+  dom.render(dom.welcome, welcomeHtmlString);
+
+// Create calendar and add event listener
+  let date = document.querySelector(".flatpickr");
+
+  flatpickr(date, {
+    altInput: true,
+    altFormat: "F j, Y",
+    dateFormat: "Y/m/d",
+    maxDate: "2019/09/22",
+    minDate: "2019/06/15"
+});
+
+
+  let cal = document.querySelector(".flatpickr")
+
+  cal.addEventListener("change", function() {
+    state.currentDay = cal.value;
+    refreshPage();
+  });
+
+  refreshPage()
+
+  function refreshPage(){
+    dom.clear(dom.latestWeek);
+    dom.clear(dom.latestActivity);
+    dom.clear(dom.allTime);
+    dom.clear(dom.challenges);
+    dom.clear(dom.community);
+    dom.clear(dom.reportCard);
+
   // Latest Activity widget
   const latestActivityHtmlString = latestActivity.generateHtmlString(
     state.currentUser.id,
@@ -75,36 +113,22 @@
   latestWeek.generateSleepChart();
   dom.bindEvents(dom.latestWeek, "change", dom.handleLatestWeekSelect);
 
-  let date = document.querySelector(".flatpickr");
+    // Challenge widget
+    const challengeHtmlString = challenge.generateHtmlString(challengeState);
+    dom.render(dom.challenges, challengeHtmlString);
 
-  flatpickr(date, {
-    altInput: true,
-    altFormat: "F j, Y",
-    dateFormat: "Y-m-d",
-});
+    // Community widget
+    const communityHtmlString = community.generateHtmlString(averages);
+    dom.render(dom.community, communityHtmlString);
+    dom.bindEvents(dom.community, "change", dom.handleCommunitySelect);
 
-  // Welcome name widget
-  const welcomeHtmlString = welcome.generateHtmlString(state);
-  dom.render(dom.welcome, welcomeHtmlString);
+    // All-time widget
+    const allTimeHtmlString = allTime.generateHtmlString(state);
+    dom.render(dom.allTime, allTimeHtmlString);
 
-  // Challenge widget
-  const challengeHtmlString = challenge.generateHtmlString(challengeState);
-  dom.render(dom.challenges, challengeHtmlString);
+    // Report Card widget
+    const reportCardHtmlString = reportCard.generateHtmlString(state);
+    dom.render(dom.reportCard, reportCardHtmlString);
 
-  // Community widget
-  const communityHtmlString = community.generateHtmlString(communityAllTimeAverages, communityDayAverages);
-  dom.render(dom.community, communityHtmlString);
-  dom.bindEvents(dom.community, "change", dom.handleCommunitySelect);
-
-  // Friends widget
-  const friendsHtmlString = friends.generateHtmlString(state, userRepository);
-  dom.render(dom.friends, friendsHtmlString);
-
-  // All-time widget
-  const allTimeHtmlString = allTime.generateHtmlString(state);
-  dom.render(dom.allTime, allTimeHtmlString);
-
-  // Report Card widget
-  const reportCardHtmlString = reportCard.generateHtmlString(state);
-  dom.render(dom.reportCard, reportCardHtmlString);
+  }
 })();

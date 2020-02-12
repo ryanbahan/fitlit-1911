@@ -85,5 +85,9 @@ const dom = {
   render(targetNode, htmlString) {
     const fragment = this.stringToFragment(htmlString);
     targetNode.appendChild(fragment);
+  },
+
+  clear(targetNode){
+    targetNode.innerHTML = "";
   }
 };

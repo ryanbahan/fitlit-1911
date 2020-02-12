@@ -9,9 +9,7 @@ class Calculator {
   }
 
   getUserDayTotal(category, date, metric) {
-    return category.find(
-      day => day.date === date && day.userID === this.currentDataId
-    )[metric];
+    return category.find(day => day.date === date && day.userID === this.currentDataId)[metric];
   }
 
   getUserAllTimeAvg(category, metric, decimalPlacement = 100) {
