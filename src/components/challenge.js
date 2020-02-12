@@ -2,10 +2,13 @@ const challenge = {
   generateHtmlString(challengeState) {
     const leaderboard = challengeState.getLeaderboardPercentages();
 
+    console.log(leaderboard);
+
     let nameBlocks = leaderboard.map(person => {
       const htmlString = `
-        <p>${person[0]}</p>
-        <div class="light-red activity-data-today-2 widget-block" data-name="${name}" style="width: ${person[1]}%"}>
+        <p class="challenge-name">${person[0]}</p>
+        <div class="light-red activity-data-today-2" data-name="${name}" id="challenge-bar" style="width: ${person[1]}%"}>
+          <p class="challenge-label">${person[1]}%</p>
         </div>
       `;
       return htmlString;
