@@ -113,6 +113,42 @@ const latestWeek = {
       }
     });
   },
+  generateActivityChart() {
+    Chart.defaults.global.elements.line.fill = false;
+
+    let activityChart = new Chart(dom.latestWeekActivityChartCtx, {
+      type: "line",
+      data: {
+        labels: this.activityMinutes.dates.map(date =>
+          date.toString().charAt(0)
+        ),
+        datasets: [
+          {
+            label: "Active minutes",
+            data: this.activityMinutes.metrics,
+            fill: false,
+            borderColor: "rgba(255, 133, 133, 0.8)",
+            pointBackgroundColor: "rgba(255, 133, 133, 0.8)",
+            pointBorderColor: "rgba(255, 133, 133, 0.8)",
+            pointHoverBackgroundColor: "rgba(255, 133, 133, 0.8)",
+            pointHoverBorderColor: "rgba(255, 133, 133, 0.8)"
+          }
+        ]
+      },
+      options: {
+        maintainAspectRatio: false,
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true
+              }
+            }
+          ]
+        }
+      }
+    });
+  },
   generateSummaryChart() {
     Chart.defaults.global.elements.line.fill = false;
 
@@ -218,6 +254,7 @@ const latestWeek = {
           <option value="summary-chart">Chart summary</option>
           <option value="hydration-chart">Hydration chart</option>
           <option value="sleep-chart">Sleep chart</option>
+          <option value="activity-chart">Activity chart</option>
           <option value="data-summary">Data summary</option>
         </select>
       </div>
@@ -229,6 +266,9 @@ const latestWeek = {
       </article>
       <article class="chart-container sleep-chart is-hidden">
         <canvas id="sleep-chart"></canvas>
+      </article>
+      <article class="chart-container activity-chart is-hidden">
+        <canvas id="activity-chart"></canvas>
       </article>
       <div class="data-summary latest-week__wrapper is-hidden">
         <div class="latest-week__wrapper-hydration">

@@ -16,6 +16,8 @@ const dom = {
   latestWeekSleepChartCtx: null,
   latestWeekSummaryChart: null,
   latestWeekSummaryChartCtx: null,
+  latestWeekActivityChart: null,
+  latestWeekActivityChartCtx: null,
   settings: document.querySelector(".settings"),
   welcome: document.querySelector(".user-profile"),
   bindEvents(targetElement, eventType, handlerFunction) {
@@ -28,6 +30,7 @@ const dom = {
       dom.latestWeekSummaryChart,
       dom.latestWeekHydrationChart,
       dom.latestWeekSleepChart,
+      dom.latestWeekActivityChart,
       dom.latestWeekDataSummary
     ];
 
@@ -44,6 +47,9 @@ const dom = {
         dom.latestWeekSleepChart.classList.remove("is-hidden");
         break;
       case 3:
+        dom.latestWeekActivityChart.classList.remove("is-hidden");
+        break;
+      case 4:
         dom.latestWeekDataSummary.classList.remove("is-hidden");
         break;
       default:
@@ -52,7 +58,9 @@ const dom = {
   },
   handleCommunitySelect(e) {
     const { selectedIndex } = e.target;
-    const dataContainers = [...dom.community.querySelectorAll('.community-data')];
+    const dataContainers = [
+      ...dom.community.querySelectorAll(".community-data")
+    ];
 
     switch (selectedIndex) {
       case 0:
@@ -87,7 +95,7 @@ const dom = {
     targetNode.appendChild(fragment);
   },
 
-  clear(targetNode){
+  clear(targetNode) {
     targetNode.innerHTML = "";
   }
 };
