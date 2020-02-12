@@ -39,7 +39,7 @@ const reportCard = {
 
     const dailyGrades = getGrades();
 
-    dailyGrades.overallGrade = calculator.calculateOverallGrade(dailyGrades)
+    dailyGrades.overallGrade = calculator.calculateOverallGrade(dailyGrades);
 
     return `<h1 class="report-card-title">Daily Report Card</h1>
             <section class="grade-container">
@@ -56,12 +56,14 @@ const reportCard = {
       let grades = {
         stepsGrade: calculator.calculateStepsGrade(userDailySteps),
         flightsGrade: calculator.calculateFlightsGrade(userFloorsClimbed),
-        minutesActiveGrade: calculator.calculateMinutesActiveGrade(userActiveTime),
+        minutesActiveGrade: calculator.calculateMinutesActiveGrade(
+          userActiveTime
+        ),
         sleepQualGrade: calculator.calculateSleepQualGrade(userSleepQuality),
         sleepLengthGrade: calculator.calculateSleepLengthGrade(userSleep),
-        hydrationGrade: calculator.calculateHydrationGrade(userHydration),
+        hydrationGrade: calculator.calculateHydrationGrade(userHydration)
       };
       return grades;
-    };
+    }
   }
 };
