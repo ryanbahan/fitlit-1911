@@ -24,7 +24,12 @@ aside {
   grid-row: 1 / -1;
   height: 100%;
   justify-content: space-between;
-  padding: 1rem 1rem 1rem 1rem;
+  padding: 1rem 1rem 2.4rem 1rem;
+}
+
+body,
+html {
+  height: 100%;
 }
 
 canvas {
@@ -70,7 +75,6 @@ p {
   background-color: var(--blue);
 }
 
-
 .center-rc-text {
   /* width: 50%; */
   display: flex;
@@ -79,7 +83,6 @@ p {
 
 .card-container {
   display: flex;
-
 }
 
 .chart-container {
@@ -161,7 +164,6 @@ p {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 10px;
 }
 
 .large-card {
@@ -260,8 +262,9 @@ p {
 }
 
 .overall-grade {
-  font-size: 23px;
   align-items: flex-start;
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
 }
 
 .red {
@@ -269,11 +272,13 @@ p {
 }
 
 .report {
-  font-size: 18px;
   display: flex;
   flex-direction: row;
+  font-style: italic;
+  font-size: 1rem;
   justify-content: flex-start;
 }
+
 .report-card {
   display: flex;
   flex-direction: column;
@@ -281,9 +286,10 @@ p {
 }
 
 .report-card-title {
-  width:100%;
-  align-items: flex-start;
-  font-size: 25px;
+  font-family: "PT Sans Narrow", sans-serif;
+  font-size: 15px;
+  margin-bottom: 0.6rem;
+  width: 100%;
 }
 
 .resources {
@@ -397,6 +403,10 @@ p {
   .app-container {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
+  }
+
+  aside {
+    justify-content: flex-start;
   }
 
   .card-container > * {
