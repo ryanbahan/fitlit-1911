@@ -38,18 +38,18 @@ const reportCard = {
     );
 
     const dailyGrades = getGrades();
-    
+
     dailyGrades.overallGrade = calculator.calculateOverallGrade(dailyGrades)
 
-    return `<h2>Report Card: ${dailyGrades.overallGrade}</h2>
-            <h2>Your Daily Average</h2>
-            <section>
-              <div class="steps"><i class="fas fa-shoe-prints"></i>&nbsp;&nbsp;${userDailySteps}&nbsp;&nbsp;${dailyGrades.stepsGrade.grade}</div>
-              <div class="flights"><i class="far fa-building"></i>&nbsp;&nbsp;${userFloorsClimbed}&nbsp;&nbsp;${dailyGrades.flightsGrade.grade}</div>
-              <div class="minutes-active"><i class="fas fa-walking"></i>&nbsp;&nbsp;${userActiveTime}&nbsp;&nbsp;${dailyGrades.minutesActiveGrade.grade}</div>
-              <div class="sleep-quality"><i class="far fa-thumbs-up"></i>&nbsp;&nbsp;${userSleepQuality}&nbsp;&nbsp;${dailyGrades.sleepQualGrade.grade}</div>
-              <div class="sleep-time"><i class="fas fa-bed"></i>&nbsp;&nbsp;${userSleep}&nbsp;&nbsp;${dailyGrades.sleepLengthGrade.grade}</div>
-              <div class="ounces-water"><i class="fas fa-mug-hot"></i>&nbsp;&nbsp;${userHydration}&nbsp;&nbsp;${dailyGrades.hydrationGrade.grade}</div>
+    return `<h1 class="report-card-title">Daily Report Card</h1>
+            <section class="grade-container">
+              <div class="overall-grade">Overall Score: ${dailyGrades.overallGrade}</div>
+              <div class="report">Minutes Active:&nbsp;&nbsp;&nbsp;&nbsp;${dailyGrades.minutesActiveGrade.grade}</div>
+              <div class="report">Sleep Quality:&nbsp;&nbsp;&nbsp;&nbsp;${dailyGrades.sleepQualGrade.grade}</div>
+              <div class="report">Sleep Length:&nbsp;&nbsp;&nbsp;&nbsp;${dailyGrades.sleepLengthGrade.grade}</div>
+              <div class="report">Hydration:&nbsp;&nbsp;&nbsp;&nbsp;${dailyGrades.hydrationGrade.grade}</div>
+              <div class="report">Flights:&nbsp;&nbsp;&nbsp;&nbsp;${dailyGrades.flightsGrade.grade}</div>
+              <div class="report">Steps: &nbsp;&nbsp;&nbsp;&nbsp;${dailyGrades.stepsGrade.grade}</div>
             </section>`;
 
     function getGrades() {

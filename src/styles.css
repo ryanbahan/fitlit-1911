@@ -122,6 +122,13 @@ p {
   margin-bottom: 0.6rem;
 }
 
+.grade-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 10px;
+}
+
 .large-card {
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
@@ -201,8 +208,25 @@ p {
   margin: 7.5% 0;
 }
 
+.overall-grade {
+  font-size: 23px;
+}
+
 .red {
   background-color: var(--red);
+}
+
+.report {
+  font-size: 18px;
+}
+.report-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.report-card-title {
+  font-size: 25px;
 }
 
 .resources {
