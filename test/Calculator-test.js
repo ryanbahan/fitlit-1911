@@ -459,4 +459,96 @@ describe("Calculator", function() {
       ]);
     });
   });
+  describe('Report Card', function() {
+
+    it('should return a grade for a users daily steps', function() {
+      let dS1 = 15000;
+      let dS2 = 10000;
+      let dS3 = 7000;
+      let dS4 = 4000;
+      let dS5 = 2000;
+      expect(calculator.calculateStepsGrade(dS1).grade).to.equal('A');
+      expect(calculator.calculateStepsGrade(dS2).grade).to.equal('B');
+      expect(calculator.calculateStepsGrade(dS3).grade).to.equal('C');
+      expect(calculator.calculateStepsGrade(dS4).grade).to.equal('D');
+      expect(calculator.calculateStepsGrade(dS5).grade).to.equal('F');
+    });
+
+    it('should return a grade for a users daily flights climbed', function() {
+      let f1 = 50;
+      let f2 = 25;
+      let f3 = 8;
+      let f4 = 2;
+      let f5 = 0;
+      expect(calculator.calculateFlightsGrade(f1).grade).to.equal('A');
+      expect(calculator.calculateFlightsGrade(f2).grade).to.equal('B');
+      expect(calculator.calculateFlightsGrade(f3).grade).to.equal('C');
+      expect(calculator.calculateFlightsGrade(f4).grade).to.equal('D');
+      expect(calculator.calculateFlightsGrade(f5).grade).to.equal('F');
+    });
+
+    it('should return a grade for a users daily minutes active', function() {
+      let mA1 = 260;
+      let mA2 = 150;
+      let mA3 = 100;
+      let mA4 = 50;
+      let mA5 = 45;
+      expect(calculator.calculateMinutesActiveGrade(mA1).grade).to.equal('A');
+      expect(calculator.calculateMinutesActiveGrade(mA2).grade).to.equal('B');
+      expect(calculator.calculateMinutesActiveGrade(mA3).grade).to.equal('C');
+      expect(calculator.calculateMinutesActiveGrade(mA4).grade).to.equal('D');
+      expect(calculator.calculateMinutesActiveGrade(mA5).grade).to.equal('F');
+    });
+
+    it('should return a grade for a users daily steps', function() {
+      let sQ1 = 4.5;
+      let sQ2 = 3.5;
+      let sQ3 = 2.5;
+      let sQ4 = 1.5;
+      let sQ5 = 1;
+      expect(calculator.calculateSleepQualGrade(sQ1).grade).to.equal('A');
+      expect(calculator.calculateSleepQualGrade(sQ2).grade).to.equal('B');
+      expect(calculator.calculateSleepQualGrade(sQ3).grade).to.equal('C');
+      expect(calculator.calculateSleepQualGrade(sQ4).grade).to.equal('D');
+      expect(calculator.calculateSleepQualGrade(sQ5).grade).to.equal('F');
+    });
+
+    it('should return a grade for a users daily steps', function() {
+      let sL1 = 8.2;
+      let sL2 = 7.5;
+      let sL3 = 6.5;
+      let sL4 = 5;
+      let sL5 = 3;
+      expect(calculator.calculateSleepLengthGrade(sL1).grade).to.equal('A');
+      expect(calculator.calculateSleepLengthGrade(sL2).grade).to.equal('B');
+      expect(calculator.calculateSleepLengthGrade(sL3).grade).to.equal('C');
+      expect(calculator.calculateSleepLengthGrade(sL4).grade).to.equal('D');
+      expect(calculator.calculateSleepLengthGrade(sL5).grade).to.equal('F');
+    });
+
+    it('should return a grade for a users daily hydration', function() {
+      let h1 = 100;
+      let h2 = 70;
+      let h3 = 51;
+      let h4 = 50;
+      let h5 = 30;
+      expect(calculator.calculateHydrationGrade(h1).grade).to.equal('A');
+      expect(calculator.calculateHydrationGrade(h2).grade).to.equal('B');
+      expect(calculator.calculateHydrationGrade(h3).grade).to.equal('C');
+      expect(calculator.calculateHydrationGrade(h4).grade).to.equal('D');
+      expect(calculator.calculateHydrationGrade(h5).grade).to.equal('F');
+    });
+
+    it('should return an overall grade that is an average of all other grades', function() {
+      let dailyGrades = {
+        stepsGrade: calculator.calculateStepsGrade(9567),
+        flightsGrade: calculator.calculateFlightsGrade(6),
+        minutesActiveGrade: calculator.calculateMinutesActiveGrade(100),
+        sleepQualGrade: calculator.calculateSleepQualGrade(4.9),
+        sleepLengthGrade: calculator.calculateSleepLengthGrade(8.2),
+        hydrationGrade: calculator.calculateHydrationGrade(10)
+      }
+      expect(calculator.calculateOverallGrade(dailyGrades)).to.equal('C');
+    });
+  });
 });
