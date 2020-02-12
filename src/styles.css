@@ -183,6 +183,7 @@ p {
   overflow: scroll;
   padding: 2.5%;
   width: 95%;
+  min-height: 250px;
 }
 
 .large-card-container {
