@@ -1,9 +1,9 @@
 # FitLit
 
-1. [Abstract](#abstract)
-2. [Technology](#technology)
-3. [Installation](#installation)
-4. [Deployment](#deployment)
+1. [Abstract](#1-abstract)
+2. [Technology](#2-technology)
+3. [Installation](#3-installation)
+4. [Deployment](#4-deployment)
 
 ![fitlit](https://user-images.githubusercontent.com/54119863/74386692-d8ccb300-4db3-11ea-95fa-daa6d720dddf.gif)
 
@@ -15,7 +15,8 @@ A fitness tracking dashboard displaying metrics from a large data set. Metrics i
 
 - JavaScript
 - Mocha/Chai
-- Chart.js 
+- Chart.js
+- Faker.js
 - Flatpickr.js (Calendar API)
 - Interact.js (Drag and drop API)
 
