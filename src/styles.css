@@ -77,6 +77,12 @@ p {
   background-color: var(--blue);
 }
 
+.center-rc-text {
+  /* width: 50%; */
+  display: flex;
+  justify-content: center;
+}
+
 .chart-container {
   height: 90%;
   position: relative;
@@ -123,9 +129,10 @@ p {
 }
 
 .grade-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   margin-top: 10px;
 }
 
@@ -210,6 +217,7 @@ p {
 
 .overall-grade {
   font-size: 23px;
+  align-items: flex-start;
 }
 
 .red {
@@ -218,6 +226,9 @@ p {
 
 .report {
   font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }
 .report-card {
   display: flex;
@@ -226,6 +237,8 @@ p {
 }
 
 .report-card-title {
+  width:100%;
+  align-items: flex-start;
   font-size: 25px;
 }
 

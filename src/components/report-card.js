@@ -43,13 +43,13 @@ const reportCard = {
 
     return `<h1 class="report-card-title">Daily Report Card</h1>
             <section class="grade-container">
-              <div class="overall-grade">Overall Score: ${dailyGrades.overallGrade}</div>
-              <div class="report">Minutes Active:&nbsp;&nbsp;&nbsp;&nbsp;${dailyGrades.minutesActiveGrade.grade}</div>
-              <div class="report">Sleep Quality:&nbsp;&nbsp;&nbsp;&nbsp;${dailyGrades.sleepQualGrade.grade}</div>
-              <div class="report">Sleep Length:&nbsp;&nbsp;&nbsp;&nbsp;${dailyGrades.sleepLengthGrade.grade}</div>
-              <div class="report">Hydration:&nbsp;&nbsp;&nbsp;&nbsp;${dailyGrades.hydrationGrade.grade}</div>
-              <div class="report">Flights:&nbsp;&nbsp;&nbsp;&nbsp;${dailyGrades.flightsGrade.grade}</div>
-              <div class="report">Steps: &nbsp;&nbsp;&nbsp;&nbsp;${dailyGrades.stepsGrade.grade}</div>
+              <p class="overall-grade">Overall Score: ${dailyGrades.overallGrade}</p>
+              <p class="report">Minutes Active:&nbsp;&nbsp;&nbsp;&nbsp;${dailyGrades.minutesActiveGrade.grade}</p>
+              <p class="report">Sleep Quality:&nbsp;&nbsp;&nbsp;&nbsp;${dailyGrades.sleepQualGrade.grade}</p>
+              <p class="report">Sleep Length:&nbsp;&nbsp;&nbsp;&nbsp;${dailyGrades.sleepLengthGrade.grade}</p>
+              <p class="report">Hydration:&nbsp;&nbsp;&nbsp;&nbsp;${dailyGrades.hydrationGrade.grade}</p>
+              <p class="report">Flights:&nbsp;&nbsp;&nbsp;&nbsp;${dailyGrades.flightsGrade.grade}</p>
+              <p class="report">Steps: &nbsp;&nbsp;&nbsp;&nbsp;${dailyGrades.stepsGrade.grade}</p>
             </section>`;
 
     function getGrades() {
