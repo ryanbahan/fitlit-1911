@@ -64,7 +64,7 @@ const latestActivity = {
     );
 
     return `
-      <h2>Latest Activity</h2>
+      <h2>Latest 24hrs</h2>
       <div class="activity-data-today-1 widget-block red">
         <i class="fas fa-shoe-prints"></i>
         <p class="user-daily-steps-js">${userDailySteps}</p>
