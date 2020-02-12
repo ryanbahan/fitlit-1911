@@ -84,7 +84,7 @@ const latestActivity = {
         <p class="user-daily-sleep-quality-js widget-label">${userSleepQuality} <span class="small-label">quality</span></p>
       </div>
       <div class="sleep-data-today widget-block blue">
-        <i class="fas fa-tint"></i>
+        <i class="fas fa-mug-hot"></i>
         <p class="user-daily-hydration-js widget-label">${userHydration} <span class="small-label">oz</span></p>
       </div>
     `;
