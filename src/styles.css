@@ -84,6 +84,11 @@ p {
   width: 100%;
 }
 
+.challenge-goals {
+  max-height: 50vh;
+  overflow: scroll;
+}
+
 .community-label {
   margin-bottom: 5%;
 }
