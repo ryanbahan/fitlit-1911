@@ -101,6 +101,15 @@ p {
   font-size: 12px;
 }
 
+.challenge-flex-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: -5%;
+}
+
+.community-average-select {
+}
+
 .community-label {
   margin-bottom: 5%;
 }

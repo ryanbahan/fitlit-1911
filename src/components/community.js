@@ -8,7 +8,13 @@ const community = {
     const communitySleepQuality = averages[5][1];
     const communityHydration = averages[0][1];
 
-    return `<h2 class="community-label">Community Average</h2>
+    return `<div class="challenge-flex-container">
+    <h2 class="community-label">Community Average</h2>
+    <select name="community-average-select" id="community-select-view">
+      <option value="data-summary">All-time</option>
+      <option value="hydration-chart">Today</option>
+    </select>
+    </div>
     <div class="activity-data-today-1 widget-block red">
       <i class="fas fa-shoe-prints"></i>
       <p class="user-daily-steps-js">${communityDailySteps}</p>
