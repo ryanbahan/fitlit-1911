@@ -96,6 +96,11 @@ p {
   align-self: flex-end;
 }
 
+.challenge-name {
+  margin: 4% 0 2% 0;
+  font-size: 12px;
+}
+
 .community-label {
   margin-bottom: 5%;
 }
