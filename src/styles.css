@@ -82,6 +82,20 @@ p {
   overflow: scroll;
 }
 
+#challenge-bar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  border-radius: 5px;
+  margin: 2.5% 0;
+}
+
+.challenge-label {
+  font-size: 12px;
+  padding: 2% 5% 2% 2%;
+  align-self: flex-end;
+}
+
 .community-label {
   margin-bottom: 5%;
 }
