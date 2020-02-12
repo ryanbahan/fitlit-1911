@@ -337,3 +337,78 @@ p {
     width: 100%;
   }
 }
+
+@media screen and (max-width: 720px) {
+  .app-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .card-container > * {
+    grid-row: auto;
+  }
+
+  .app-container aside {
+    display: none;
+  }
+
+  .challenge-goals {
+    max-height: 100%;
+  }
+
+  .data-summary {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 1fr;
+    margin-top: 1rem;
+    padding-right: 0.6rem;
+  }
+
+  .large-card {
+    padding: 1rem;
+    width: 90%;
+  }
+
+  .large-card-right {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .latest-week__wrapper {
+    padding-right: 0.6rem;
+  }
+
+  .latest-week__wrapper-activity {
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+  }
+
+  .latest-week__wrapper-hydration {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+
+  .latest-week__wrapper-sleep {
+    grid-column: 2 / -1;
+    grid-row: 1 / 2;
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+  }
+
+  main div {
+    justify-content: center;
+  }
+
+  .row-a,
+  .row-b {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    width: 100%;
+  }
+}
