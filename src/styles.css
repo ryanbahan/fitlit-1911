@@ -328,6 +328,11 @@ p {
   background-color: #fff;
 }
 
+.small-label {
+  font-size: 12px;
+  font-style: italic;
+}
+
 .user-profile {
   display: flex;
   width: 20%;
@@ -383,6 +388,9 @@ p {
 .widget-block-small fas,
 .widget-block-small far {
   font-size: 1rem;
+}
+
+.widget-label {
 }
 
 .yellow {
