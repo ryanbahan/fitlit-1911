@@ -128,7 +128,7 @@ class Calculator {
     const percentages = [];
     const max = Math.max(...dataset);
     dataset.forEach(datum => {
-      percentages.push((datum * 100) / max);
+      percentages.push(Math.round((datum * 100) / max));
     });
 
     return percentages;

@@ -155,6 +155,24 @@ describe("Calculator", function() {
       expect(calculator.getWeekDay(sunday)).to.equal("Sunday");
       expect(calculator.getWeekDay(monday)).to.equal("Monday");
     });
+
+    it("should return percentages for a dataset", function() {
+      const dataset = calculator.getUserWeekTotal(
+        state.currentUserData.sleepData,
+        "2019/06/21",
+        "hoursSlept"
+      ).metrics;
+      console.log(calculator.getPercentages(dataset));
+      expect(calculator.getPercentages(dataset)).to.deep.equal([
+        60,
+        53,
+        80,
+        60,
+        47,
+        100,
+        78
+      ]);
+    });
   });
 
   describe("Calculator-Hydration", function() {
@@ -417,7 +435,7 @@ describe("Calculator", function() {
     it("should return all user average steps by date", function() {
       expect(
         calculator.getAllUserAllTimeAvg("activityData", database, "numSteps")
-      ).to.equal(4397.76);
+      ).to.equal(4397.75);
     });
 
     it("should return all user average minutes by date", function() {
@@ -427,7 +445,7 @@ describe("Calculator", function() {
           database,
           "minutesActive"
         )
-      ).to.equal(87.08);
+      ).to.equal(87.11);
     });
   });
 
