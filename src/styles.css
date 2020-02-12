@@ -46,6 +46,10 @@ h2 {
   font-size: 15px;
 }
 
+i {
+align-items: center;
+}
+
 main {
   grid-column: 1 / 2;
 }
@@ -142,6 +146,7 @@ p {
   height: 50px;
   width: 310px;
   justify-content: flex-end;
+  margin-top: 1%;
 }
 
 .friend {

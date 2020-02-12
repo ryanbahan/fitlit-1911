@@ -129,6 +129,5 @@
     // Report Card widget
     const reportCardHtmlString = reportCard.generateHtmlString(state);
     dom.render(dom.reportCard, reportCardHtmlString);
-
   }
 })();
