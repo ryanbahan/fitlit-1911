@@ -118,7 +118,7 @@
     dom.render(dom.challenges, challengeHtmlString);
 
     // Community widget
-    const communityHtmlString = community.generateHtmlString(averages);
+    const communityHtmlString = community.generateHtmlString(communityAllTimeAverages);
     dom.render(dom.community, communityHtmlString);
     dom.bindEvents(dom.community, "change", dom.handleCommunitySelect);
 
