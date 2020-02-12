@@ -17,6 +17,7 @@ A fitness tracking dashboard displaying metrics from a large data set. Metrics i
 - Mocha/Chai
 - Chart.js 
 - Flatpickr.js (Calendar API)
+- Interact.js (Drag and drop API)
 
 ### 3. Installation
 
@@ -27,4 +28,4 @@ A fitness tracking dashboard displaying metrics from a large data set. Metrics i
 
 ### 4. Deployment
 
-Link to be added...
+https://ryanbahan.github.io/fitlit-1911/src/index.html
