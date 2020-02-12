@@ -67,8 +67,16 @@ p {
   background-color: var(--blue);
 }
 
+
+.center-rc-text {
+  /* width: 50%; */
+  display: flex;
+  justify-content: center;
+}
+
 .card-container {
   display: flex;
+
 }
 
 .chart-container {
@@ -115,10 +123,17 @@ p {
 }
 
 .fitlit-nav-logo {
+  width: 80%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 1%;
+}
+
+.flatpickr {
+  height: 50px;
+  width: 310px;
+  justify-content: flex-end;
 }
 
 .friend {
@@ -142,17 +157,25 @@ p {
   margin-bottom: 0.6rem;
 }
 
+.grade-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 10px;
+}
+
 .large-card {
+  background-color: #fff;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   cursor: grab;
-  margin: 1.5%;
-  padding: 2.5%;
-  background-color: #fff;
   height: 42.5vh;
+  margin: 1.5%;
+  overflow: scroll;
+  padding: 2.5%;
   width: 95%;
 }
-
 
 .large-card-container {
   display: flex;
@@ -237,8 +260,31 @@ p {
   margin: 7.5% 0;
 }
 
+.overall-grade {
+  font-size: 23px;
+  align-items: flex-start;
+}
+
 .red {
   background-color: var(--red);
+}
+
+.report {
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.report-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.report-card-title {
+  width:100%;
+  align-items: flex-start;
+  font-size: 25px;
 }
 
 .resources {

@@ -2,8 +2,6 @@ const challenge = {
   generateHtmlString(challengeState) {
     const leaderboard = challengeState.getLeaderboardPercentages();
 
-    console.log(leaderboard);
-
     let nameBlocks = leaderboard.map(person => {
       const htmlString = `
         <p class="challenge-name">${person[0]}</p>

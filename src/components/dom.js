@@ -14,7 +14,8 @@ const dom = {
   latestWeekHydrationChartCtx: null,
   latestWeekSleepChart: null,
   latestWeekSleepChartCtx: null,
-  community: document.querySelector(".community"),
+  latestWeekSummaryChart: null,
+  latestWeekSummaryChartCtx: null,
   settings: document.querySelector(".settings"),
   welcome: document.querySelector(".user-profile"),
   bindEvents(targetElement, eventType, handlerFunction) {
@@ -24,16 +25,17 @@ const dom = {
   handleLatestWeekSelect(e) {
     const { selectedIndex } = e.target;
     const displays = [
-      dom.latestWeekDataSummary,
+      dom.latestWeekSummaryChart,
       dom.latestWeekHydrationChart,
-      dom.latestWeekSleepChart
+      dom.latestWeekSleepChart,
+      dom.latestWeekDataSummary
     ];
 
     displays.forEach(display => display.classList.add("is-hidden"));
 
     switch (selectedIndex) {
       case 0:
-        dom.latestWeekDataSummary.classList.remove("is-hidden");
+        dom.latestWeekSummaryChart.classList.remove("is-hidden");
         break;
       case 1:
         dom.latestWeekHydrationChart.classList.remove("is-hidden");
@@ -41,11 +43,13 @@ const dom = {
       case 2:
         dom.latestWeekSleepChart.classList.remove("is-hidden");
         break;
+      case 3:
+        dom.latestWeekDataSummary.classList.remove("is-hidden");
+        break;
       default:
         break;
     }
   },
-
   handleCommunitySelect(e) {
     const { selectedIndex } = e.target;
     const dataContainers = [...dom.community.querySelectorAll('.community-data')];
@@ -81,13 +85,11 @@ const dom = {
         break;
     }
   },
-
   stringToFragment(string) {
     let renderer = document.createElement("template");
     renderer.innerHTML = string;
     return renderer.content;
   },
-
   render(targetNode, htmlString) {
     const fragment = this.stringToFragment(htmlString);
     targetNode.appendChild(fragment);
