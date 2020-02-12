@@ -43,21 +43,14 @@ h2 {
   font-size: 15px;
 }
 
-html,
-body {
-  width: 100%;
-  height: 100%;
-}
-
 main {
   width: 80%;
 }
 
 nav {
-  /* height: 7.5%; */
   display: flex;
   justify-content: space-between;
-  padding: 1rem 1rem 0 1rem;
+  padding: 0.5rem 1rem 0 1rem;
 }
 
 p {
@@ -85,7 +78,7 @@ p {
 }
 
 .challenge-goals {
-  max-height: 45vh;
+  max-height: 42.5vh;
   overflow: scroll;
 }
 
@@ -125,10 +118,11 @@ p {
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   cursor: grab;
-  margin: 4%;
+  margin: 1.5%;
   padding: 2.5%;
-  flex-grow: 1;
   background-color: #fff;
+  height: 42.5vh;
+  width: 95%;
 }
 
 
@@ -237,12 +231,14 @@ p {
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   cursor: grab;
-  margin: 7.5%;
+  margin: 2.5%;
   overflow: scroll;
   padding: 5%;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  flex-grow: 1; */
+  width: 90%;
+  /* height: 42.5vh; */
   background-color: #fff;
 }
 
